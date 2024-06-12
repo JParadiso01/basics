@@ -4,6 +4,8 @@
 #include <stdbool.h>
 #include <string.h>
 
+
+//structure for a dynamic array
 typedef struct {
     union {
         int   *i_data;
@@ -14,7 +16,7 @@ typedef struct {
 } DA;
 
 
-//mode that works with negative numbers
+//modulo that works with negative numbers
 int mod(int a, int b);
 
 //python style string slicing that can also do reversed strings
@@ -38,7 +40,9 @@ void DaPrintString(DA *da);
 //functions for easier file management
 bool ReadEntireFileIntoDA(DA *da, char * filePath);
 
-
+//--------------------------------------------------
+//        Code Implementation Starts Here
+//--------------------------------------------------
 
 char* sliceString(char *string, int start, int end){
     //gets size of new string
@@ -100,7 +104,7 @@ void DaPrintInt(DA *da){
     }
     printf("Printing Dyanmic Array:\n");
     for (int i = 0; i < da->size; i++){
-        printf("%d, ", da->i_data[i]);
+        (i == da->size-1) ? printf("%d", da->i_data[i]) : printf("%d, ", da->i_data[i]);
     }
     printf("\n");
 }
@@ -136,13 +140,13 @@ void DaPrintChar(DA *da){
     }
     printf("Printing Dyanmic Array:\n");
     for (int i = 0; i < da->size; i++){
-        printf("%c", da->c_data[i]);
+        (i == da->size-1) ? printf("%c", da->c_data[i]) : printf("%s, ", da->c_data[i]);
     }
     printf("\n");
 }
 
 void DaAppendString(DA *da, char *item){
-        if (da->size == 0){
+    if (da->size == 0){
         da->s_data = (char **)malloc(sizeof(char *));
         da->s_data[0] = (char *)malloc(strlen(item)*sizeof(char));
         strcpy(da->s_data[0], item);
