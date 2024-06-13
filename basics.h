@@ -140,7 +140,7 @@ void DaPrintChar(DA *da){
     }
     printf("Printing Dyanmic Array:\n");
     for (int i = 0; i < da->size; i++){
-        (i == da->size-1) ? printf("%c", da->c_data[i]) : printf("%s, ", da->c_data[i]);
+        (i == da->size-1) ? printf("%c", da->c_data[i]) : printf("%c, ", da->c_data[i]);
     }
     printf("\n");
 }
